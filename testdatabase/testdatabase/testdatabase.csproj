@@ -80,6 +80,10 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="App_Data\Stathis.mdf" />
+    <Content Include="App_Data\Stathis_log.ldf">
+      <DependentUpon>Stathis.mdf</DependentUpon>
+    </Content>
     <Content Include="Global.asax" />
     <Content Include="Web.config" />
   </ItemGroup>
@@ -101,8 +105,17 @@
     </None>
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="App_Data\" />
     <Folder Include="Models\" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Stathis.Models\Stathis.Models.csproj">
+      <Project>{16278DD3-B497-4739-BF04-B0EEA5256260}</Project>
+      <Name>Stathis.Models</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Stathis.Repository\Stathis.Repository.csproj">
+      <Project>{f7a9d35b-1e90-4e76-878b-19d07252070e}</Project>
+      <Name>Stathis.Repository</Name>
+    </ProjectReference>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

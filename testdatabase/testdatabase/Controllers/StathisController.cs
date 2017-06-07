@@ -4,6 +4,8 @@ using System.Linq;
 using System.Net;
 using System.Net.Http;
 using System.Web.Http;
+using Stathis.Repository;
+
 
 namespace testdatabase.Controllers
 {
@@ -23,8 +25,8 @@ namespace testdatabase.Controllers
         [HttpGet]
         public HttpResponseMessage GetById(int id)
         {
-            int i = id + 1;
-            return Request.CreateResponse(HttpStatusCode.OK, i);
+            var customerRepo = new CustomerRepository();
+            return Request.CreateResponse(HttpStatusCode.OK, customerRepo.GetById(id));
 
         }
     }

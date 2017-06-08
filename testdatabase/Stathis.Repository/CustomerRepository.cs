@@ -20,19 +20,20 @@ namespace Stathis.Repository
 
                 SqlCommand sqlCmd = new SqlCommand();
                 sqlCmd.CommandType = CommandType.Text;
-                sqlCmd.CommandText = "Select * from Table where Id='" + Id + "';";
+                sqlCmd.CommandText = "Select * from Table2 where Id='" + Id + "';";
                 sqlCmd.Connection = connection;
                 connection.Open();
-                using (var reader = sqlCmd.ExecuteReader())
-                {
+                //SqlDataReader reader = sqlCmd.ExecuteReader();
+                 using (var reader = sqlCmd.ExecuteReader())
+                 {
 
-                    while (reader.Read())
-                    {
-                        customer.Id = Int32.Parse(reader["Id"].ToString());
-                        customer.FirstName = reader["FirstName"].ToString();
-                        customer.Email = reader["Email"].ToString();
-                    }
+                 while (reader.Read())
+                 {
+                    customer.Id = Int32.Parse(reader["Id"].ToString());
+                   customer.FirstName = reader["FirstName"].ToString();
+                   customer.Email = reader["Email"].ToString();
                 }
+                 }
 
             }
 

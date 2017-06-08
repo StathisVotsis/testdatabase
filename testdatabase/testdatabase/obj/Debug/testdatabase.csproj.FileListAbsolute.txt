@@ -88,3 +88,9 @@ C:\Users\Stathis\Desktop\develop\testdatabase\testdatabase\testdatabase\bin\Stat
 C:\Users\Stathis\Desktop\develop\testdatabase\testdatabase\testdatabase\bin\Stathis.Models.dll.config
 C:\Users\Stathis\Desktop\develop\testdatabase\testdatabase\testdatabase\bin\Stathis.Repository.pdb
 C:\Users\Stathis\Desktop\develop\testdatabase\testdatabase\testdatabase\bin\Stathis.Repository.dll.config
+C:\Users\s.votsis.CREATIVEMINDS\Desktop\develop\testdatabase\testdatabase\testdatabase\bin\Stathis.Models.dll
+C:\Users\s.votsis.CREATIVEMINDS\Desktop\develop\testdatabase\testdatabase\testdatabase\bin\Stathis.Repository.dll
+C:\Users\s.votsis.CREATIVEMINDS\Desktop\develop\testdatabase\testdatabase\testdatabase\bin\Stathis.Models.pdb
+C:\Users\s.votsis.CREATIVEMINDS\Desktop\develop\testdatabase\testdatabase\testdatabase\bin\Stathis.Models.dll.config
+C:\Users\s.votsis.CREATIVEMINDS\Desktop\develop\testdatabase\testdatabase\testdatabase\bin\Stathis.Repository.pdb
+C:\Users\s.votsis.CREATIVEMINDS\Desktop\develop\testdatabase\testdatabase\testdatabase\bin\Stathis.Repository.dll.config

@@ -30,8 +30,8 @@ namespace Stathis.Repository
                  while (reader.Read())
                  {
                     customer.Id = Int32.Parse(reader["Id"].ToString());
-                   customer.FirstName = reader["FirstName"].ToString();
-                   customer.Email = reader["Email"].ToString();
+                    customer.FirstName = reader["FirstName"].ToString();
+                    customer.Email = reader["Email"].ToString();
                 }
                  }
 

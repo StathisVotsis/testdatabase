@@ -21,12 +21,21 @@ namespace testdatabase.Controllers
            
         }
 
-        [Route("{id:int}")]
-        [HttpGet]
-        public HttpResponseMessage GetById(int id)
-        {
+       [Route("{id:int}")]
+       [HttpGet]
+       public HttpResponseMessage GetById(int id)
+       {
             var customerRepo = new CustomerRepository();
             return Request.CreateResponse(HttpStatusCode.OK, customerRepo.GetById(id));
+//
+        }
+
+        [Route("{name:string}")]
+        [HttpGet]
+        public HttpResponseMessage GetByString(string name)
+        {
+            var customerRepo = new CustomerRepository();
+            return Request.CreateResponse(HttpStatusCode.OK, customerRepo.GetByString(name));
 
         }
     }

@@ -71,5 +71,67 @@ namespace Stathis.Repository
             return customer;
 
         }
+
+        public void FillById(int Id)
+        {
+            var customer = new Customer();
+            using (var connection = new SqlConnection(ConfigurationManager.ConnectionStrings["det"].ToString()))
+            {
+
+                SqlCommand sqlCmd = new SqlCommand();
+                sqlCmd.CommandType = CommandType.Text;
+                sqlCmd.CommandText = "INSERT INTO Table2(Id) VALUES('"+Id+"');";
+               
+                sqlCmd.Connection = connection;
+                connection.Open();
+                //SqlDataReader reader = sqlCmd.ExecuteReader();
+                using (var reader = sqlCmd.ExecuteReader())
+                {
+
+                    while (reader.Read())
+                    {
+                        //customer.Id = Int32.Parse(reader["Id"].ToString());
+                        //customer.FirstName = reader["FirstName"].ToString();
+                        //customer.Email = reader["Email"].ToString();
+                    }
+                }
+
+            }
+
+
+            //return customer;
+
+        }
+
+        public void PutById(int Id)
+        {
+            var customer = new Customer();
+            using (var connection = new SqlConnection(ConfigurationManager.ConnectionStrings["det"].ToString()))
+            {
+
+                SqlCommand sqlCmd = new SqlCommand();
+                sqlCmd.CommandType = CommandType.Text;
+                sqlCmd.CommandText = "UPDATE Table2 SET FirstName='ok' where Id='" + Id + "';";
+
+                sqlCmd.Connection = connection;
+                connection.Open();
+                //SqlDataReader reader = sqlCmd.ExecuteReader();
+                using (var reader = sqlCmd.ExecuteReader())
+                {
+
+                    while (reader.Read())
+                    {
+                        //customer.Id = Int32.Parse(reader["Id"].ToString());
+                        //customer.FirstName = reader["FirstName"].ToString();
+                        //customer.Email = reader["Email"].ToString();
+                    }
+                }
+
+            }
+
+
+            //return customer;
+
+        }
     }
 }

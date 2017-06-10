@@ -72,7 +72,7 @@ namespace Stathis.Repository
 
         }
 
-        public void FillById(int Id)
+        public void Insert(int Id)
         {
             var customer = new Customer();
             using (var connection = new SqlConnection(ConfigurationManager.ConnectionStrings["det"].ToString()))
@@ -80,21 +80,12 @@ namespace Stathis.Repository
 
                 SqlCommand sqlCmd = new SqlCommand();
                 sqlCmd.CommandType = CommandType.Text;
-                sqlCmd.CommandText = "INSERT INTO Table2(Id) VALUES('"+Id+"');";
-               
+                sqlCmd.CommandText = "INSERT INTO Table2(Id) VALUES(@Id);";
+                sqlCmd.Parameters.Add(new SqlParameter("@Id",Id));
                 sqlCmd.Connection = connection;
                 connection.Open();
-                //SqlDataReader reader = sqlCmd.ExecuteReader();
-                using (var reader = sqlCmd.ExecuteReader())
-                {
 
-                    while (reader.Read())
-                    {
-                        //customer.Id = Int32.Parse(reader["Id"].ToString());
-                        //customer.FirstName = reader["FirstName"].ToString();
-                        //customer.Email = reader["Email"].ToString();
-                    }
-                }
+                sqlCmd.ExecuteNonQuery();
 
             }
 
@@ -103,7 +94,7 @@ namespace Stathis.Repository
 
         }
 
-        public void PutById(int Id)
+        public void Update(int Id)
         {
             var customer = new Customer();
             using (var connection = new SqlConnection(ConfigurationManager.ConnectionStrings["det"].ToString()))
@@ -115,17 +106,11 @@ namespace Stathis.Repository
 
                 sqlCmd.Connection = connection;
                 connection.Open();
-                //SqlDataReader reader = sqlCmd.ExecuteReader();
-                using (var reader = sqlCmd.ExecuteReader())
-                {
+                sqlCmd.Parameters.Add(new SqlParameter("@Id", Id));
+                sqlCmd.Connection = connection;
+                connection.Open();
 
-                    while (reader.Read())
-                    {
-                        //customer.Id = Int32.Parse(reader["Id"].ToString());
-                        //customer.FirstName = reader["FirstName"].ToString();
-                        //customer.Email = reader["Email"].ToString();
-                    }
-                }
+                sqlCmd.ExecuteNonQuery();
 
             }
 

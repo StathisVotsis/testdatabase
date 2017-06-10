@@ -5,7 +5,7 @@ using System.Net;
 using System.Net.Http;
 using System.Web.Http;
 using Stathis.Repository;
-
+using Stathis.Models;
 
 namespace testdatabase.Controllers
 {
@@ -38,12 +38,12 @@ namespace testdatabase.Controllers
              return Request.CreateResponse(HttpStatusCode.OK, customerRepo.GetByString(name));
 
          }*/
-        [Route("{Id:int}")]
+        [Route()]
         [HttpPost]
-        public HttpResponseMessage Postitem(int Id)
+        public HttpResponseMessage Postitem([FromBody] Customer customer)
         {
             var customerRepo = new CustomerRepository();
-            customerRepo.FillById(Id);
+            customerRepo.Insert(customer.Id);
 
 
             return Request.CreateResponse(HttpStatusCode.OK, "Success");
@@ -51,10 +51,10 @@ namespace testdatabase.Controllers
 
         [Route("{Id:int}")]
         [HttpPut]
-        public HttpResponseMessage Putitem(int Id)
+        public HttpResponseMessage PutItem(int Id)
         {
             var customerRepo = new CustomerRepository();
-            customerRepo.PutById(Id);
+            customerRepo.Update(Id);
 
 
             return Request.CreateResponse(HttpStatusCode.OK, "Success");

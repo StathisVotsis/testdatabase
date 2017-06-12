@@ -24,16 +24,16 @@ namespace Stathis.Repository
                 sqlCmd.Connection = connection;
                 connection.Open();
                 //SqlDataReader reader = sqlCmd.ExecuteReader();
-                 using (var reader = sqlCmd.ExecuteReader())
-                 {
+                using (var reader = sqlCmd.ExecuteReader())
+                {
 
-                 while (reader.Read())
-                 {
-                    customer.Id = Int32.Parse(reader["Id"].ToString());
-                    customer.FirstName = reader["FirstName"].ToString();
-                    customer.Email = reader["Email"].ToString();
+                    while (reader.Read())
+                    {
+                        customer.Id = Int32.Parse(reader["Id"].ToString());
+                        customer.FirstName = reader["FirstName"].ToString();
+                        customer.Email = reader["Email"].ToString();
+                    }
                 }
-                 }
 
             }
 
@@ -81,10 +81,9 @@ namespace Stathis.Repository
                 SqlCommand sqlCmd = new SqlCommand();
                 sqlCmd.CommandType = CommandType.Text;
                 sqlCmd.CommandText = "INSERT INTO Table2(Id) VALUES(@Id);";
-                sqlCmd.Parameters.Add(new SqlParameter("@Id",Id));
+                sqlCmd.Parameters.Add(new SqlParameter("@Id", Id));
                 sqlCmd.Connection = connection;
                 connection.Open();
-
                 sqlCmd.ExecuteNonQuery();
 
             }
@@ -116,6 +115,27 @@ namespace Stathis.Repository
 
 
             //return customer;
+
+        }
+
+        public void Insert2(Customer customer)
+        {
+
+            using (var connection = new SqlConnection(ConfigurationManager.ConnectionStrings["det"].ToString()))
+            {
+
+                SqlCommand sqlCmd = new SqlCommand();
+                sqlCmd.CommandType = CommandType.Text;
+                sqlCmd.CommandText = "INSERT INTO Table2(Id,FirstName,LastName,Email) VALUES(@Id,@FirstName,@LastName,@Email);";
+                sqlCmd.Parameters.Add(new SqlParameter("@Id", customer.Id));
+                sqlCmd.Parameters.Add(new SqlParameter("@FirstName", customer.FirstName));
+                sqlCmd.Parameters.Add(new SqlParameter("@LastName", customer.LastName));
+                sqlCmd.Parameters.Add(new SqlParameter("@Email", customer.Email));
+                sqlCmd.Connection = connection;
+                connection.Open();
+                sqlCmd.ExecuteNonQuery();
+
+            }
 
         }
     }

@@ -27,7 +27,7 @@ namespace testdatabase.Controllers
         public HttpResponseMessage Postitem([FromBody] Customer customer)
         {
             var customerRepo = new CustomerRepository();
-            customerRepo.Insert(customer.Id);
+            customerRepo.Insert2(customer);
 
 
             return Request.CreateResponse(HttpStatusCode.OK, "Success");

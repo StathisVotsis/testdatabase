@@ -126,8 +126,8 @@ namespace Stathis.Repository
 
                 SqlCommand sqlCmd = new SqlCommand();
                 sqlCmd.CommandType = CommandType.Text;
-                sqlCmd.CommandText = "INSERT INTO Table2(Id,FirstName,LastName,Email) VALUES(@Id,@FirstName,@LastName,@Email);";
-                sqlCmd.Parameters.Add(new SqlParameter("@Id", customer.Id));
+                sqlCmd.CommandText = "INSERT INTO Table3(FirstName,LastName,Email) VALUES(@FirstName,@LastName,@Email);";
+              //  sqlCmd.Parameters.Add(new SqlParameter("@Id", customer.Id));
                 sqlCmd.Parameters.Add(new SqlParameter("@FirstName", customer.FirstName));
                 sqlCmd.Parameters.Add(new SqlParameter("@LastName", customer.LastName));
                 sqlCmd.Parameters.Add(new SqlParameter("@Email", customer.Email));
@@ -138,5 +138,31 @@ namespace Stathis.Repository
             }
 
         }
+
+        public void Update2(int Id, string Name)
+        {
+           //var customer = new Customer();
+            using (var connection = new SqlConnection(ConfigurationManager.ConnectionStrings["det"].ToString()))
+            {
+
+                SqlCommand sqlCmd = new SqlCommand();
+                sqlCmd.CommandType = CommandType.Text;
+                sqlCmd.CommandText = "UPDATE Table3 SET FirstName='@FirstName' where Id='" + Id + "';";
+                sqlCmd.Parameters.Add(new SqlParameter("@FirstName", Name));
+                sqlCmd.Connection = connection;
+                connection.Open();
+                sqlCmd.Connection = connection;
+                connection.Open();
+
+                sqlCmd.ExecuteNonQuery();
+
+            }
+
+
+            //return customer;
+
+        }
+
+
     }
 }

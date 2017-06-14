@@ -32,5 +32,16 @@ namespace testdatabase.Controllers
 
             return Request.CreateResponse(HttpStatusCode.OK, "Success");
         }
+
+        [Route()]
+        [HttpPut]
+        public HttpResponseMessage Putitem([FromBody]int Id, string Name)
+        {
+            var customerRepo = new CustomerRepository();
+            customerRepo.Update2(Id,Name);
+
+
+            return Request.CreateResponse(HttpStatusCode.OK, "Success");
+        }
     }
 }

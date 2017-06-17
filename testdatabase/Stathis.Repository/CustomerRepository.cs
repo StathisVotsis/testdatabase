@@ -147,15 +147,12 @@ namespace Stathis.Repository
 
                 SqlCommand sqlCmd = new SqlCommand();
                 sqlCmd.CommandType = CommandType.Text;
-                sqlCmd.CommandText = "UPDATE Table3 SET FirstName='@FirstName' where Id='" + Id + "';";
+                sqlCmd.CommandText = "UPDATE Table3 SET FirstName=@FirstName where Id=@Id;";
+                sqlCmd.Parameters.Add(new SqlParameter("@Id", Id));
                 sqlCmd.Parameters.Add(new SqlParameter("@FirstName", Name));
                 sqlCmd.Connection = connection;
                 connection.Open();
-                sqlCmd.Connection = connection;
-                connection.Open();
-
                 sqlCmd.ExecuteNonQuery();
-
             }
 
 
